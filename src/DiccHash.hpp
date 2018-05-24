@@ -1,15 +1,16 @@
 #include "DiccHash.h"
-
+using namespace std;
 /* Constructor sin parámetros de la clase */
 template<class V>
 DiccHash<V>::DiccHash() {
-	// COMPLETAR
+    _tabla={};
+    _tam=0;
+    _cant_claves=0;
 }
 
 /* Destructor */
 template<class V>
 DiccHash<V>::~DiccHash() {
-	// COMPLETAR
 }
 
 /* Devuelve true si la clave está definida en el diccionario.
@@ -17,8 +18,11 @@ DiccHash<V>::~DiccHash() {
  */
 template<class V>
 bool DiccHash<V>::definido(const string& clav) const {
-	// COMPLETAR
-	return false;
+    int hash =fn_hash(clav);
+    list<V> b=_tabla[hash];
+    list<V>::iterator it = b.begin();
+    return false;
+
 }
 
 /* Agrega una clave y su significado al Diccionario.
@@ -106,7 +110,8 @@ unsigned int DiccHash<V>::colisiones() const {
  */
 template<class V>
 unsigned int DiccHash<V>::fn_hash(const string& str) const {
-	// COMPLETAR
-	return 0;
+	int valString= stoi(str);
+    int posicion= valString% _tam;
+    return posicion;
 }
 
